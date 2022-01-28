@@ -1,0 +1,40 @@
+.container {
+  width: 100vw;
+  height: 100vw;
+  background-color: tomato;
+  text-align: center;
+  display: block;
+}
+
+.container .test {
+  color: ghostwhite;
+}
+
+.container .button {
+  background-color: skyblue;
+  border: palegreen;
+  color: green;
+  display: inline-block;
+}
+
+.container .login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+  padding-right: 20%;
+}
+
+.container div .Item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  font-size: 14px;
+  height: 40px;
+  width: 300px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=Signin.module.css.map */
