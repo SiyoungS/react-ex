@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form div {
+  margin-bottom: 20px;
+}
+
+.form div:last-child {
+  margin-bottom: 0;
+}
+
+.form label {
+  display: block;
+}
+
+.form input {
+  width: 400px;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  color: #333;
+}
+
+button {
+  outline: none;
+  border: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 150px;
+  height: 40px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+button:hover {
+  background: #000;
+  color: #fff;
+}
+/*# sourceMappingURL=Join.module.css.map */

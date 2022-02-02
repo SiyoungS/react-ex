@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 // import './App.css';
 
 class Home extends Component {
-
+  // constructor(props:any){
+  //   super(props)
+  // }
   
   /* id password state값 으로 정의 */
   state = {
@@ -43,7 +45,6 @@ class Home extends Component {
       },
       input:{id:'',password:''}
     },()=>{
-
       console.log(`id는 : ${this.state.userInfo.id}\npw는 : ${this.state.userInfo.password}`);
       document.getElementById('loginForm')?.setAttribute('hidden','true')
     })
@@ -60,11 +61,11 @@ class Home extends Component {
     return (
       <div className="App">
         <header className="App-header" id="loginForm">
-          <input type="text" name="id" placeholder="아이디" value={input.id} onChange={inputIDChange} />
+          <input type="text" name="id" placeholder="아이디" defaultValue={input.id} onChange={inputIDChange} />
           <input type="password"
             name="password"
             placeholder="비밀번호"
-            value={input.password}
+            defaultValue={input.password}
             onChange={inputPWChange}
             onKeyPress={appKeyPress}
           />
@@ -72,6 +73,7 @@ class Home extends Component {
         </header>
         { userInfo.id &&
          <h2>{userInfo.id}님 환영합니다.</h2> }
+
       </div>
     );
   }
