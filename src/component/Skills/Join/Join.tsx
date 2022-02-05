@@ -67,7 +67,6 @@ class Join extends Component{
   }
   //비번 중복확인
   overPWCheck = (inputPW?:string, inputPWCheck?:string) => {
-    // console.log("들어오는 값 확인 ::"+ )
     // console.log("들어오는 값 확인 ::"+ inputPWCheck)
     if (inputPW !==inputPWCheck) {
       alert("비번 두개 다르다.")
@@ -99,6 +98,7 @@ class Join extends Component{
   }
   //생년월일 받기
   userBirth = (e:any) => {
+    console.log(e.target.value)
     this.setState({
       input:{
         id:this.state.input.id,
@@ -109,15 +109,20 @@ class Join extends Component{
       }
     })
   }
-
+  
   //회원가입 버튼 클릭
   joinUser=()=>{
     console.log("인풋값 ::: ", this.state.input);
     //나중에 입풋값들 유효성 체크
-    if (!this.state.flag.signupCheckFlag) {
-      alert('입력값을 전부 입력해주세요')
-      return false;
-    } else {
+    console.log("생년월일 인풋값 ::"+this.state.input.userBirth);
+    console.log("아이디 인풋값 ::"+this.state.input.id);
+    // if (!this.state.flag.signupCheckFlag) {
+    //   alert('입력값을 전부 입력해주세요')
+    //   return false;
+    // } else {
+      this.allInput(this.state.input.id, this.state.input.password, this.state.input.checkPW
+        , this.state.input.userBirth, this.state.input.userName);
+        console.log("올인풋 받아오는 값:::"+this.state.input.id+this.state.input.userName);
       this.setState({
         userInfo:{
           id:this.state.input.id,
@@ -128,9 +133,58 @@ class Join extends Component{
         input:{id:'',password:''} //초기화
       }, ()=> {
         //setState는 함수의 가장 마지막에서만 사용할것 -> 나중에 찾아봐 마지막에 쓰는 이유
-        console.log("유저인포 :::"+ this.state.userInfo.id + this.state.userInfo.password 
+        console.log("유저인포 :::"+ this.state.input.id + this.state.userInfo.password 
               +this.state.userInfo.userName+ this.state.userInfo.userBirth);
       })
+    // }
+  }
+  //입력값 받기
+  allInput=(inputID?:string, inputPW?:string, inputPWCheck?:string, inputName?:string, inputBrith?:string)=>{
+    if(!inputID){
+      alert("아이디 입력해라");
+      this.setState({
+        flag:{
+          signupCheckFlag:false,
+        }
+      })
+      if(!inputPW){
+        alert("비밀번호 입력해라");
+        this.setState({
+          flag:{
+            signupCheckFlag:false,
+          }
+        })
+        if(!inputPWCheck){
+          alert("비밀번호 체크 입력해라");
+          this.setState({
+            flag:{
+              signupCheckFlag:false,
+            }
+          })
+          if(!inputName){
+            alert("이름 입력해라");
+            this.setState({
+              flag:{
+                signupCheckFlag:false,
+              }
+            })
+            if(!inputBrith){
+              alert("생년월일 입력해라");
+              this.setState({
+                flag:{
+                  signupCheckFlag:false,
+                }
+              })
+            }else{
+              this.setState({
+                flag:{
+                  signupCheckFlag:true,
+                }
+              })
+            }
+          }
+        }
+      }
     }
   }
   
@@ -166,15 +220,18 @@ class Join extends Component{
               </div>
             </div>   
             <div className={styles.input_box}>
-              <label htmlFor="">이름</label>
+              <label htmlFor="userName">이름</label>
               <input type="text" placeholder="이름" id="userName"
                   defaultValue={input.userName} onChange={this.inputName}/>  
             </div>   
             <div className={styles.input_box}>
-              <label htmlFor="">생년월일</label>
-              <input type="date" id="userBirth"
-                 defaultValue={input.userBirth}/>  
-            </div>   
+              <label htmlFor="userBirth">생년월일</label>
+              <input type="date" id="userBirth" min="2000-01-01"
+                 defaultValue={input.userBirth} onChange={this.userBirth}/>  
+            </div>
+            <span style={{color:flag.signupCheckFlag?'green':'red'}}>
+              {flag.signupCheckFlag?"모든 입력값 확인되었습니다.":"입력값을 전부 입력하세요."}
+              </span>   
             <button type="button" className={styles.join_button}
                 onClick={this.joinUser}>회원가입 완료</button>
           </div>
